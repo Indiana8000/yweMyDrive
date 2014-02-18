@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<name>MyDrive</name>
+	<version>2.3</version>
+	<identifier>794c1da0-783a-11dc-a5db-00FF67E3C3EF</identifier>
+	<image usage="dock" src="Resources/DockMD.png"/>
+	<image usage="security" src="Resources/SecurityMD.png"/>
+	<author name="Andreas Kreisl" organization="Blue Paw - Software Development Crew" href="http://www.bluepaw.de"/>
+	<copyright>(c) 2007 Andreas Kreisl</copyright>
+	<description>MyDrive - Get you HDD displayed as a desktop eyecandy.</description>
+	<platform minVersion="4.0"/>
+</metadata>

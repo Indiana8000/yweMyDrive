@@ -1,0 +1,17 @@
+ToDo:
+- Sort order for Dock-Icons
+
+Version 2.3:
+- Added dynamic Dock-Icons
+- Added Preference for "MouseOver", "MouseClick" and "MultiClick".
+- Added Option for Text-Shadow
+
+Version 2.2:
+- Fixed Screenshot are now without Buttons
+
+Version 2.1:
+- Added Icon-Size option
+- Added Tool Tips
+
+Version 2.0
+- Total rewriten!

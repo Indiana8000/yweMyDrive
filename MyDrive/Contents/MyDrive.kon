@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?konfabulator xml-strict="true"?>
+<widget minimumVersion="4.0">
+	<settings>
+		<setting name="allowCustomObjectAttributes" value="true"/>
+		<setting name="debug" value="off"/>
+	</settings>
+	<about-box>
+		<about-image>Resources/About.png</about-image>
+		<about-text    hOffset="60"  vOffset="500" color="#B0B0B0" size="18" font="Thamao" data="by Andreas Kreisl" />
+		<about-text    hOffset="60"  vOffset="543" color="#B0B0B0" size="18" font="Thamao" data="MyDrive" />
+		<about-version hOffset="315" vOffset="543" color="#B0B0B0" size="18" font="Thamao" />
+	</about-box>
+
+	<window name="main" visible="false" title="MyDrive"/>
+
+	<action trigger="onLoad">
+	<![CDATA[
+		var global_debug = false;
+		include("mod_menu.js");
+		include("Resources/JSON.js");
+		include("Resources/class_license.js");
+		include("Resources/class_text.js");
+		include("os_windows.js");
+		include("mod_mydrive.js");
+
+		if(class_license_check()==true) StartRealWidget();
+		function StartRealWidget() {
+			if(global_debug) print("*** StartRealWidget()");
+			mod_mydrive_init();
+		}
+	]]>
+	</action>
+
+	<action trigger="onPreferencesChanged">
+	<![CDATA[
+		mod_mydrive_PrefChange();
+	]]>
+	</action>
+
+	<action trigger="onUnload">
+	<![CDATA[
+		mod_mydrive_SavePref();
+	]]>
+	</action>
+
+	<action trigger="onDockOpened">
+	<![CDATA[
+		mod_mydrive_updatedock();
+		mod_mydrive.ticking = true;
+	]]>
+	</action>
+
+	<action trigger="onDockClosed">
+	<![CDATA[
+		mod_mydrive_dock.ticking = false;
+	]]>
+	</action>
+
+	<preference name="class_license_agreed" type="checkbox" title="Agreed" defaultValue="0" hidden="true" />
+
+	<preference name="mod_mydrive_resetconfig" type="checkbox" title="pref_gen_resetconfig" />
+
+<preferenceGroup name="pref_speed" title="pref_group_timer" icon="Resources/Preference_group_icon_wwarby_timer.png" />
+	<preference group="pref_speed" name="UpdateSpeed" type="slider" defaultValue="5" title="pref_gen_updatespeed">
+		<ticks>31</ticks>
+		<minLength>1</minLength>
+		<maxLength>30</maxLength>
+		<tickLabel>1</tickLabel>
+		<tickLabel>pref_gen_seconds</tickLabel>
+		<tickLabel>30</tickLabel>
+		<description>pref_gen_updatespeed_description</description>
+	</preference>
+
+	<preference group="pref_speed" name="PerfMonSpeed" type="slider" defaultValue="2" title="pref_gen_perfmonspeed">
+		<ticks>31</ticks>
+		<minLength>1</minLength>
+		<maxLength>30</maxLength>
+		<tickLabel>1</tickLabel>
+		<tickLabel>pref_gen_seconds</tickLabel>
+		<tickLabel>30</tickLabel>
+		<description>pref_gen_perfmonspeed_description</description>
+	</preference>
+
+	<preference group="pref_speed" name="DockSpeed" type="slider" defaultValue="60" title="pref_gen_dockspeed">
+		<ticks>12</ticks>
+		<minLength>5</minLength>
+		<maxLength>60</maxLength>
+		<tickLabel>5</tickLabel>
+		<tickLabel>pref_gen_seconds</tickLabel>
+		<tickLabel>60</tickLabel>
+		<description>pref_gen_dockspeed_description</description>
+	</preference>
+
+<preferenceGroup name="pref_actions" title="pref_group_action" icon="Resources/PreferenceGroup_icon_openclipart_mouse.png" />
+	<preference group="pref_actions" name="ActionMouseOver" type="popup" defaultValue="1" title="pref_gen_mouseover">
+		<option>pref_opt_none</option>
+		<optionValue>0</optionValue>
+		<option>pref_opt_fade</option>
+		<optionValue>1</optionValue>
+		<option>pref_opt_show</option>
+		<optionValue>2</optionValue>
+	</preference>
+
+	<preference group="pref_actions" name="ActionMouseClick" type="popup" defaultValue="2" title="pref_gen_mouseclick">
+		<option>pref_opt_none</option>
+		<optionValue>0</optionValue>
+		<option>pref_opt_fade</option>
+		<optionValue>1</optionValue>
+		<option>pref_opt_show</option>
+		<optionValue>2</optionValue>
+		<option>pref_opt_open</option>
+		<optionValue>3</optionValue>
+		<option>pref_opt_target</option>
+		<optionValue>4</optionValue>
+	</preference>
+
+	<preference group="pref_actions" name="ActionMouseMulti" type="popup" defaultValue="3" title="pref_gen_mousemulti">
+		<option>pref_opt_none</option>
+		<optionValue>0</optionValue>
+		<option>pref_opt_fade</option>
+		<optionValue>1</optionValue>
+		<option>pref_opt_show</option>
+		<optionValue>2</optionValue>
+		<option>pref_opt_open</option>
+		<optionValue>3</optionValue>
+		<option>pref_opt_target</option>
+		<optionValue>4</optionValue>
+	</preference>
+
+
+</widget>
